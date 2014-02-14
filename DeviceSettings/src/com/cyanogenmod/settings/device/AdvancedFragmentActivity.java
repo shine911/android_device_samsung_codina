@@ -91,23 +91,18 @@ public class AdvancedFragmentActivity extends PreferenceFragment {
 		SharedPreferences sharedPrefs = PreferenceManager
 				.getDefaultSharedPreferences(context);
 
-		String value = sharedPrefs.getBoolean(DeviceSettings.KEY_USE_SPI_CRC,
+		String crcvalue = sharedPrefs.getBoolean(DeviceSettings.KEY_USE_SPI_CRC,
 				false) ? "0" : "1";
-		Utils.writeValue(FILE_SPI_CRC, value);
+		Utils.writeValue(FILE_SPI_CRC, crcvalue);
 	
-	int sstor = SystemProperties.getInt("persist.sys.vold.switchexternal", 0) ;
-
+		int sstor = SystemProperties.getInt("persist.sys.vold.switchexternal", 0) ;
 		SharedPreferences.Editor editor = sharedPrefs.edit();
 		editor.putBoolean(DeviceSettings.KEY_SWITCH_STORAGE,sstor==1?true:false);
 		editor.commit();
 
-		SharedPreferences sharedPrefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-		sharedPrefs.getBoolean(DeviceSettings.KEY_USE_SWEEP2WAKE, false);
-
-		String value = sharedPrefs.getBoolean(
+		String s2wvalue = sharedPrefs.getBoolean(
 				DeviceSettings.KEY_USE_SWEEP2WAKE, false) ? "on" : "off";
-		Utils.writeValue(FILE_SWEEP2WAKE, value);
+		Utils.writeValue(FILE_SWEEP2WAKE, s2wvalue);
 
 	}
 
