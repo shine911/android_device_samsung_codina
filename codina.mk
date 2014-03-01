@@ -6,7 +6,7 @@ $(call inherit-product, vendor/samsung/u8500-common/codina/codina-vendor-blobs.m
 
 ifneq ($(TARGET_SCREEN_HEIGHT),800)
 # Call cm.mk because somehow it's not being called!
-$(call inherit-product, device/samsung/codina/cos.mk)
+$(call inherit-product, device/samsung/codina/cm.mk)
 endif
 
 LOCAL_PATH := device/samsung/codina
