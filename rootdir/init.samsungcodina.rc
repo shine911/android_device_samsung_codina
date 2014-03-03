@@ -281,9 +281,6 @@ on post-fs-data
 
 on early-boot
 
-    # Launch core services in case charging mode is entered
-    start watchdog-kicker
-
     # Prepare modem
     class_start modem-u8500
     class_start modem-core
@@ -401,9 +398,9 @@ on boot
     chmod 0222 /sys/class/sec/flash/enable
 
     # system permissions for device parts
+    chown system system /d/cpuidle/deepest_state
     chown system system /sys/module/mali/parameters/mali_l2_max_reads
     chown system system /sys/module/mali/parameters/pre_allocated_memory_size_max
-    chown system system /d/cpuidle/deepest_state
     chown system system /sys/kernel/abb-regu/VOTG
     chown system system /sys/kernel/abb-charger/max_ac_c
     chown system system /sys/kernel/abb-charger/max_usb_c
@@ -426,28 +423,6 @@ on boot
     # Modem
     class_start modem
     class_start default
-
-# Make sure we startup btld before hcid
-service btld /system/bin/btld -hb 3000000 -hp /dev/ttyAMA0 -lpm 1
-    user root
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-# for bluetooth
-service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --no2bytes --tosleep 5000 \
-    --baudrate 3000000 -use_baudrate_for_download --patchram /system/bin/bcm4330.hcd /dev/ttyAMA0
-    class main
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-# for bluetooth rf test
-service bt_dut_cmd /system/bin/bcm_dut
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
 
 # Crash Safe Parameter Storage Area, serving production parameter requests from clients.
 # Configuration is read from file "/etc/cspsa.conf" and each found area spawns a CSPSA server
@@ -551,13 +526,6 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-# Bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
-
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     class main
     disabled
@@ -587,6 +555,13 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     class main
     disabled
     oneshot
+
+# Bugreport is triggered by holding down volume down, volume up and power
+service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+    keycodes 114 115 116
 
 # FUSE sdcard daemon service for sdcard
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
