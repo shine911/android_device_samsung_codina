@@ -37,10 +37,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/asound.conf:system/etc/asound.conf \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/adm.sqlite-u8500:system/etc/adm.sqlite-u8500
-    
-# Dbus
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/dbus.conf:system/etc/dbus.conf
 
 # Gps
 PRODUCT_COPY_FILES += \
