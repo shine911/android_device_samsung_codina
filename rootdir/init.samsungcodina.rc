@@ -562,7 +562,8 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1
     disabled
 
 # System permission for device parts
-on property:sys.boot_completed=1   
+on property:sys.boot_completed=1
+    chown system system /proc/sys/net/ipv4/tcp_congestion_control
     chown system system /sys/block/mmcblk0/queue/read_ahead_kb
     chown system system /sys/devices/system/cpu/sched_mc_power_savings
     chown system system /sys/class/misc/backlightnotification/enabled
