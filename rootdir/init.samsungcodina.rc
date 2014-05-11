@@ -55,6 +55,7 @@ on init
 on fs
 
     mount_all /fstab.samsungcodina
+    swapon_all /fstab.samsungcodina
 
     setprop ro.crypto.fuse_sdcard true
  
