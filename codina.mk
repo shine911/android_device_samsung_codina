@@ -5,8 +5,8 @@ $(call inherit-product, device/samsung/u8500-common/common.mk)
 $(call inherit-product, vendor/samsung/u8500-common/codina/codina-vendor-blobs.mk)
 
 ifneq ($(TARGET_SCREEN_HEIGHT),800)
-# Call cm.mk because somehow it's not being called!
-$(call inherit-product, device/samsung/codina/cm.mk)
+# Call pa_codina.mk because somehow it's not being called!
+$(call inherit-product, device/samsung/codina/pa_codina.mk)
 endif
 
 LOCAL_PATH := device/samsung/codina
@@ -33,3 +33,8 @@ PRODUCT_COPY_FILES += \
 # Gps
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
+
+ifneq ($(filter pa_codina,$(TARGET_PRODUCT)),)
+    PRODUCT_COPY_FILES += \
+        vendor/pa/prebuilt/bootanimation/800x480.zip:system/media/bootanimation.zip
+endif
