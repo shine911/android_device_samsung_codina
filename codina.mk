@@ -11,6 +11,7 @@ endif
 
 LOCAL_PATH := device/samsung/codina
 
+# Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Init files
