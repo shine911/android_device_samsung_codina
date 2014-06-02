@@ -34,3 +34,8 @@ PRODUCT_COPY_FILES += \
 # Gps
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
+
+ifneq ($(filter pa_codina,$(TARGET_PRODUCT)),)
+    PRODUCT_COPY_FILES += \
+        vendor/pa/prebuilt/bootanimation/800x480.zip:system/media/bootanimation.zip
+endif
