@@ -37,3 +37,7 @@ PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 PRODUCT_MODEL := GT-I8160
 endif
+
+#Bootanimation
+    PRODUCT_COPY_FILES += \
+        vendor/pa/prebuilt/bootanimation/800x480.zip:system/media/bootanimation.zip
