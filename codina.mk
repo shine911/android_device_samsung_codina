@@ -28,3 +28,7 @@ PRODUCT_COPY_FILES += \
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
+
+#Stock DPI
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=240
