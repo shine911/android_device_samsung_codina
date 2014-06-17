@@ -9,7 +9,7 @@ on early-fs
     mkdir /efs
     mount ext4 /dev/block/mmcblk0p7 /efs nosuid nodev noatime wait
 
-# Install Kernel Module
+    # Install Kernel Module
     # J4FS(lfs) mount points.
     mkdir /mnt 0775 root root
     mkdir /mnt/.lfs 0755 root root
@@ -18,7 +18,7 @@ on early-fs
     insmod /system/lib/modules/param.ko
 
     mount j4fs /dev/block/mmcblk0p1 /mnt/.lfs wait
-	
+
 on boot
     service adbd /sbin/adbd recovery
     disabled
