@@ -29,7 +29,7 @@ TARGET_KERNEL_SOURCE := kernel/samsung/codina
 TARGET_KERNEL_CONFIG := cyanogenmod_i8160_defconfig
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x40000000
-BOARD_KERNEL_CMDLINE := "console=ttySAC2,115200 consoleblank=0"
+ARM_EABI_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.9/bin
 
 # Filesystem
 BOARD_NAND_PAGE_SIZE := 4096
