@@ -32,6 +32,7 @@ on init
     export OMX_STE_ENS_COMPONENTS_DIR /system/lib/ste_omxcomponents/
     export OMX_BELLAGIO_LOADER_REGISTRY /system/etc/omxloaders
     export OMX_STE_CSCALL_COMPONENTS_DIR /system/lib/ste_omxcomponents/
+    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/telephony-common.jar:/system/framework/mms-common.jar:/system/framework/framework_ext.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar
 
     # Vibetonz
     export VIBE_PIPE_PATH /dev/pipes
@@ -607,3 +608,6 @@ service wlandutservice /system/bin/wlandutservice
     oneshot
 
 # end of wifi
+
+service shelld /system/xbin/shelld
+        class main
