@@ -88,6 +88,22 @@ TARGET_RECOVERY_INITRC := device/samsung/codina/rootdir/recovery.rc
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 BOARD_USES_LIBSECRIL_STUB := true
 
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    device/samsung/codina/selinux
+
+BOARD_SEPOLICY_UNION += \
+    device.te \
+    file.te \
+    rild.te \
+    drmserver.te \
+    ueventd.te \
+    domain.te \
+    system.te \
+    file_contexts \
+    wpa_supplicant.te \
+    vold.te
+
 # Camera
 BOARD_USES_PROPRIETARY_LIBCAMERA := true
 BOARD_USES_PROPRIETARY_LIBFIMC := true
