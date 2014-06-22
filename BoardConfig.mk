@@ -25,7 +25,7 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 TARGET_RECOVERY_INITRC := device/samsung/codina/rootdir/recovery.rc
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/codina
+TARGET_KERNEL_SOURCE := kernel/samsung/u8500
 TARGET_KERNEL_CONFIG := cyanogenmod_i8160_defconfig
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x40000000
